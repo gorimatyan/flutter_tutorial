@@ -1,16 +1,21 @@
-# flutter_tutorial
+# Flutterのチュ～トリアルなり！！！
+静的解析とかフォーマットの設定からやっていくなり。
 
-A new Flutter project.
+## ゼロから環境構築をした時に行ったこと
 
-## Getting Started
+### コミット時に自動でlintチェックとコードフォーマットをするためのLefthookの導入
+`npm i -D lefthook`
 
-This project is a starting point for a Flutter application.
+コミット時に自動でlintとコードフォーマットのチェックが動く。失敗すればコミットされない。
+`lefthook.yml`が設定ファイルなので、他プロジェクトで流用するときはコピペする。
 
-A few resources to get you started if this is your first Flutter project:
+### lintの設定
+`analysis_options.yaml`で設定している。これはFlutterが使っている設定を元に若干の修正を加えている。
+`analysis_options.yaml`にある`public_member_api_docs`のルールだけよく分からんのでコメントアウトにした。
+[https://github.com/flutter/packages/blob/main/analysis_options.yaml]
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+`dart analyze`をターミナルで実行すればlintが動く。
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## cloneした時に行うこと
+`flutter pub get`
+`npm i`
