@@ -1,0 +1,20 @@
+# git commitした時にlinter → sort-imports → formatterの順にコマンドが実行される
+# pre-pushにすればpush前にできるけど、そこは考えようかね。
+pre-commit:
+  parallel: false # 下記のコマンドを並列処理にするならtrue。今回は確実にformatterを最後に動かしたいのでfalse
+  commands:
+    linter:
+      # && git add {staged_files}と書くことでステージング済みのファイルでフォーマット後の新たな差分が出た場合、そのファイルを再びステージングに移動している
+      run: dart fix --apply lib && git add {staged_files}
+    sort-imports:
+      glob: "*.dart"
+      run: flutter pub run import_sorter:main {staged_files} && git add {staged_files}
+    formatter:
+      glob: "*.dart"
+      run: dart format {staged_files} && git add {staged_files}
+
+# git pullした時にnpm i される設定
+# post-merge:
+#   commands:
+#     package-install:
+#       run: npm i
