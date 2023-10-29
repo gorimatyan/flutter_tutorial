@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'pages/welcome/welcome.dart';
+import 'common/widgets/custom_button.dart';
 
 void main() {
   // アプリ全体でriverpodの状態を共有するためのProviderを使う
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const WelcomePage(),
+      home: const MyHomePage(),
     );
   }
 }
@@ -64,6 +63,7 @@ class MyHomePage extends ConsumerWidget {
         floatingActionButton: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
+            const CustomButton(),
             FloatingActionButton(
               heroTag: 'next page',
               onPressed: () {
