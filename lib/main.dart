@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'application/state/s1.dart';
+import 'application/state/s2.dart';
 import 'common/widgets/custom_button.dart';
 
 void main() {
@@ -40,6 +42,8 @@ class MyHomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ref.watch(変数名)でStateProviderの値を受け取れる。
     final int count = ref.watch(appCount);
+    final int s1 = ref.watch(s1NotifierProvider);
+    final StateModel s2 = ref.watch(s2NotifierProvider);
 
     return Scaffold(
         appBar: AppBar(
@@ -57,6 +61,14 @@ class MyHomePage extends ConsumerWidget {
                 count.toString(),
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
+              Text(
+                '$s1',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              Text(
+                s2.text,
+                style: Theme.of(context).textTheme.headlineMedium,
+              )
             ],
           ),
         ),

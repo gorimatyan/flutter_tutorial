@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CustomButton extends StatelessWidget {
+import '../../application/state/s1.dart';
+
+class CustomButton extends ConsumerWidget {
   const CustomButton({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return ElevatedButton(
       onPressed: () {
         // ボタンを押した時のアクションをここに書きます。
+        final S1Notifier notifier = ref.read(s1NotifierProvider.notifier);
+        notifier.updateState();
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: const Color(0xFF8B4513), // ボタンの背景色
